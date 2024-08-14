@@ -2,16 +2,11 @@
     "name": "october/pensoft-safeguard-theme",
     "type": "october-theme",
     "description": "Pensoft Safeguard October CMS theme",
-    "keywords": ["october", "cms", "antenna", "theme"],
+    "keywords": ["october", "cms", "safeguard", "theme"],
     "authors": [
         {
             "name": "Kremena Kaleva",
             "email": "k.kaleva@pensoft.net",
-            "role": "Dev"
-        },
-        {
-            "name": "Georgi Zhelezov",
-            "email": "g.zhelezov@pensoft.net",
             "role": "Dev"
         }
     ],
@@ -22,11 +17,6 @@
     "extra": {
         "branch-alias": {
             "dev-master": "1.0-dev"
-        }
-    },
-    "config": {
-        "allow-plugins": {
-            "composer/installers": true
         }
     }
 }

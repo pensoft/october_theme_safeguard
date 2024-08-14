@@ -1,0 +1,44 @@
+url = "/researchers"
+layout = "default"
+title = "Researchers"
+
+[siteSearchInclude]
+==
+<?php
+use Pensoft\Accordions\Models\Category;
+use Pensoft\Accordions\Models\Item;
+
+function onStart(){
+    $this['record'] = Category::where('id', 2)->first();
+    $this['accordion_items'] = Item::where('category_id', 2)->get();
+}
+?>
+==
+{% component 'siteSearchInclude' %}
+
+<div class="container">
+    <div class="row middle-xs">
+        <div class="col-md-3 col-xs-12"><img src="{{'Researcher.svg'|media}}"> </div>
+        <div class="col-md-9 col-xs-12">{{record.body|raw}}</div>
+    </div>
+    <div class="row work_packages">
+        <div class="col-xs-12">
+            <h3>{{record.name}}</h3>
+            {% for item in accordion_items %}
+            <div class="accordion-border">
+                <div class="row middle-xs accordion-toggle">
+
+                    <div class="col-xs start-xs">{{item.title}}</div>
+
+                    <div class="col-xs-2 end-xs plusminus"><span class="plus"></span></div>
+                </div>
+
+                <div class="accordion-content" style="display: none;">
+                    {{item.body|raw}}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>

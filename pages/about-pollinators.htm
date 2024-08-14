@@ -1,0 +1,63 @@
+url = "/about-pollinators"
+layout = "default"
+title = "About pollinators"
+
+[siteSearchInclude]
+
+[jumbotron]
+jumbotron = "about-pollinators"
+background = "transperant"
+templates = "template3"
+description_limit = 0
+
+[jumbotron jumbotron2]
+jumbotron = "useful-resources"
+background = "transperant"
+templates = "template3"
+description_limit = 0
+==
+<?
+use Pensoft\Accordions\Models\Category;
+use Pensoft\Accordions\Models\Item;
+
+function onStart(){
+    $this['record'] = Category::where('id', 5)->first();
+    $this['accordion_items'] = Item::where('category_id', 5)->get();
+}
+?>
+==
+{% component 'siteSearchInclude' %}
+
+{% component 'jumbotron' %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h3 align="center">{{record.name}}</h3>
+            <p align="center">{{record.body|raw}}</p>
+        </div>
+    </div>
+    <div class="row work_packages">
+        <div class="col-xs-12">
+            {% for item in accordion_items %}
+            <div class="accordion-border">
+                <div class="row middle-xs accordion-toggle">
+
+                    <div class="col-xs start-xs">{{item.title}}</div>
+
+                    <div class="col-xs-2 end-xs plusminus"><span class="plus"></span></div>
+                </div>
+
+                <div class="accordion-content" style="display: none;">
+                    {{item.body|raw}}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+{% component 'jumbotron2' %}
+
+

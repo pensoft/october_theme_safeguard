@@ -1,0 +1,41 @@
+title = "About Safeguard"
+layout = "default"
+url = "/about-safeguard"
+
+[siteSearchInclude]
+
+[jumbotron]
+jumbotron = "about-safeguard"
+background = "transperant"
+templates = "template3"
+description_limit = 0
+==
+{% component 'siteSearchInclude' %}
+{% component 'jumbotron' %}
+
+<div class="container-fluid subscribe-newsletter">
+    <div class="container row">
+        <div class="col-md-12 col-xs-12 text-subscribe"><p class="text-subscribe-paragraph">Subscribe to Safeguard’s bimonthly newsletter!</p><p><a href="this.theme.subscribe" class="btn btn-primary">Subscribe</a></p></div>
+        <div class="col-md-6 col-xs-12 start-md center-xs follow_us">Follow us</div>
+        <div class="col-md-6 col-xs-12 end-md center-xs social">
+            <div class="icons">
+                <a href="https://www.safeguard.biozentrum.uni-wuerzburg.de/" target="_blank" class="pr p-secondary p-web normal" target="_blank"></a>
+                {% if this.theme.twitter_url %}
+                <a href="{{this.theme.twitter_url}}" target="_blank" class="pr p-secondary p-twitter normal" target="_blank"></a>
+                {% endif %}
+                {% if this.theme.facebook_url %}
+                <a href="{{this.theme.facebook_url}}" target="_blank" class="pr p-secondary p-facebook normal" target="_blank"></a>
+                {% endif %}
+                {% if this.theme.linkedin_url %}
+                <a  href="{{this.theme.linkedin_url}}" target="_blank" class="pr p-secondary p-linkedin normal" target="_blank"></a>
+                {% endif %}
+                {% if this.theme.youtube_url %}
+                <a  href="{{this.theme.youtube_url}}" target="_blank" class="pr p-secondary p-youtube normal" target="_blank"></a>
+                {% endif %}
+                {% if this.theme.instagram_url %}
+                <a  href="{{this.theme.instagram_url}}" target="_blank" class="pr p-secondary p-instagram normal" target="_blank"></a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

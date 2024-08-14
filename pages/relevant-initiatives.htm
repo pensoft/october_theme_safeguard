@@ -1,0 +1,56 @@
+title = "Relevant initiatives"
+layout = "default"
+url = "/relevant-initiatives/:slug?|[a-zA-Z\-0-9]"
+
+[siteSearchInclude]
+==
+<?php
+use Pensoft\Initiatives\Models\Category;
+use Pensoft\Initiatives\Models\Initiative;
+
+function onStart(){
+    if($this->param('slug')){
+        $this['category']= Category::where('slug', $this->param('slug'))->first();
+       $this['key_initiatives'] =  Initiative::where('category_id', $this['category']['id'])->get();
+    }else{
+       $this['categories'] = Category::get();
+    }
+    $this['slug'] = $this->param('slug');
+}
+?>
+==
+{% component 'siteSearchInclude' %}
+
+<div class="container">
+    {% if slug %}
+        <h1>{{category.title}}</h1>
+        <div class="row">
+            {% for initiative in key_initiatives %}
+            <div class="col-md-4 col-xs-12">
+                <div class="initiative_item_detail" href="{{'relevant-initiatives'|page}}/{{category.slug}}">
+                    <img src="{{initiative.logo.path}}">
+                    <h3>{{initiative.title}}</h3>
+                    <div class="readmore">
+                        <p>{{initiative.description | raw}}</p>
+                        <p><a href="{{initiative.website}}" target="_blank" class="btn btn-primary">Visit website</a></p>
+                        <span class="readmore-link"></span>
+                    </div>
+
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="row">
+            {% for category in categories %}
+            <div class="col-md-3 col-xs-12">
+                <a class="initiative_item" href="{{'relevant-initiatives'|page}}/{{category.slug}}">
+                    <img src="{{category.cover.path}}">
+                    <h3>{{category.title}}</h3>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+
+    {% endif %}
+</div>

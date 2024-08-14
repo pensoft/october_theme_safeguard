@@ -1,5 +1,5 @@
 .navbar-loggedin-user{
-  background: @default-color;
+  background: @link-color;
   position: fixed;
   z-index: 999;
   height: 58px;
@@ -9,23 +9,24 @@
 
 .navbar-loggedin-user ul{
   list-style-type: none;
-  .breakpoint-small-down({
+  .breakpoint-large-down({
     padding: 0;
   })
 }
 
 .navbar-loggedin-user ul li{
   display: inline;
-  padding: 0 20px 0 0;
-  font-size: 16px;
-  .breakpoint-small-down({
-    padding: 0 10px;
+  padding: 0 20px;
+  .breakpoint-large-down({
+    padding: 0 8px;
   })
 }
 
 .navbar-loggedin-user ul li a{
   color: @white-color;
-  .breakpoint-small-down({
+  max-width: 150px;
+  padding: 10px;
+  .breakpoint-large-down({
     padding: 0;
     font-size: 16px;
   })
@@ -38,22 +39,23 @@
 .navbar-loggedin-user li.active a{}
 
 .nav-item.sign-in a{
-  color: @date-text-color!important;
   padding-top: 0.6rem;
   padding-bottom: 0.6rem;
   display: block;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  .breakpoint-small-down({
+    &:hover{
+        color: @link-color;
+    }
+  .breakpoint-large-down({
       padding: 0;
       padding-bottom: 5px;
-      color: @date-text-color!important;
   });
 }
 
 #headerNavbarLogin{
-  .breakpoint-small-down({
+  .breakpoint-large-down({
     display: none;
   });
 }
@@ -66,34 +68,34 @@
 }
 
 #headerNavbar{
-  .breakpoint-small-down({
+  .breakpoint-large-down({
     display: flex;
   });
 }
 
-#menuToggle{
-  .breakpoint-huge-down({
-    order: 3;
-  });
-  .breakpoint-small-down({
-    order: 2;
-  });
-}
-
-.navbar-brand{
-  .breakpoint-huge-down({
-    order: 1;
-  });
-  .breakpoint-small-down({
-    order: 1;
-  });
-}
+//#menuToggle{
+//  .breakpoint-huge-down({
+//    order: 3;
+//  });
+//  .breakpoint-large-down({
+//    order: 2;
+//  });
+//}
+//
+//.navbar-brand{
+//  .breakpoint-huge-down({
+//    order: 1;
+//  });
+//  .breakpoint-large-down({
+//    order: 1;
+//  });
+//}
 //
 //.search{
 //  .breakpoint-huge-down({
 //    order: 2;
 //  });
-//  .breakpoint-small-down({
+//  .breakpoint-large-down({
 //    order: 3;
 //  });
 //}

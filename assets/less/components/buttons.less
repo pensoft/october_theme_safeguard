@@ -1,6 +1,6 @@
-[type=button]:not(:disabled), 
-[type=reset]:not(:disabled), 
-[type=submit]:not(:disabled), 
+[type=button]:not(:disabled),
+[type=reset]:not(:disabled),
+[type=submit]:not(:disabled),
 button:not(:disabled) {
     cursor: pointer;
 }
@@ -38,11 +38,11 @@ button:not(:disabled) {
         padding-bottom: 0 !important;
         padding-left: 0 !important;
         line-height: unset!important;
-        border-top-right-radius: 50px;
-        border-bottom-right-radius: 50px;
-        .border-bottom();
-        .border-top();
-        .border-right();
+        border-top-right-radius: 12px;
+        border-bottom-right-radius: 12px;
+        border-bottom: 1px solid #d1d1d1;
+        border-top: 1px solid #d1d1d1;
+        border-right: 1px solid #d1d1d1;
         padding: 0;
         height: 32px;
         .breakpoint-small-down({
@@ -94,30 +94,24 @@ button:not(:disabled) {
     color: @white-color;
     background-color: @button-background-color;
     border-color: @button-background-color;
-    .rounded(50px);
-    padding-left: 30px;
-    padding-right: 30px;
+    .rounded(4px);
+    padding-left: 25px;
+    padding-right: 25px;
     padding-top: 10px;
     padding-bottom: 10px;
+    font-size: 0.8em;
 }
 
 .btn-primary:hover, .btn-primary.active {
-    color: @white-color;
-    background-color: @link-color;
-    border-color: @link-color;
-    .rounded(50px);
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    opacity: 0.5!important;
 }
 
 .btn-secondary {
     color: @white-color;
     background-color: @secondary-btn-color;
     border-color: @secondary-color;
-    .rounded(50px);
-    padding: 15px 30px;
+    .rounded(4px);
+    padding: 5px 20px;
     &.width100{
       width: 100%;
     }

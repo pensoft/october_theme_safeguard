@@ -1,0 +1,70 @@
+url = "/resources"
+layout = "default"
+title = "Resources"
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+
+[ResourcesList]
+==
+<?php
+use Pensoft\Resources\Models\Format;
+use Pensoft\Resources\Models\Data;
+
+function onStart(){
+    $this['formats'] = Format::get();
+    $this['records'] = Data::orderBy('date', 'desc')->orderBy('title', 'asc')->get();
+}
+?>
+==
+<div class="container">
+    <div class="record-search mb-2">
+        <div class="row">
+            <div class="col-xs-12 search-field-container">
+                <div class="search-field">
+                    <select multiple id="searchInput" name="searchTerms">
+                        <option value="">{{'Search' |_}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-xs-12 filter-fields-container">
+                <div class="filter_label">Filter by</div>
+                <div class="sort-field sort-dropdown">
+                    <select id="sortFormat" name="sortFormat">
+                        <option value="0">{{'All formats' |_}}</option>
+                        {% for format in formats %}
+                        <option value="{{format.id}}">{{format.title}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="sort-field">
+                      <input
+                          type="text"
+                          class="datepicker-input"
+                          id="dateFrom"
+                          name="dateFrom"
+                            placeholder="YYYY-MM-DD">
+                    -
+                      <input
+                          type="text"
+                          class="datepicker-input"
+                          id="dateTo"
+                          name="dateTo"
+                          placeholder="YYYY-MM-DD">
+                </div>
+
+                <div class="clear-filter">
+                    <a id="clearFilter" href="javascript:void(0);">{{'Clear filters' |_}}</a>
+                </div>
+                <div class="apply-filter">
+                    <a id="applyFilter" class="btn btn-primary">{{'Apply filter' |_}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{{records}}
+    <div class="row" id="recordsContainer">
+        {% partial 'library_records' records=records %}
+    </div>
+
+</div>
