@@ -81,7 +81,6 @@ $(document).ready(function() {
         updateLibraryList();
     });
 
-
     $('#sortFormat, #sortProject').selectize({
         onChange: function(value) {
             updateLibraryList();
@@ -104,8 +103,14 @@ function getDate( element ) {
 
 
 function updateLibraryList() {
-    var sortFormat = $('#sortFormat').val();
     var sortProject = $('#sortProject').val();
+
+    if($('#sortProject').length == 0){
+        sortProject = 2;
+    }
+
+    var sortFormat = $('#sortFormat').val();
+
     var dateFrom = $('#dateFrom').val();
     var dateTo = $('#dateTo').val();
     var searchTerm = $('#searchInput').val();

@@ -5,15 +5,15 @@ is_hidden = 0
 robot_index = "index"
 robot_follow = "follow"
 
-[ResourcesList]
+[KnowledgeLibraryList]
 ==
 <?php
-use Pensoft\Resources\Models\Format;
-use Pensoft\Resources\Models\Data;
+use Pensoft\Knowledgelibrary\Models\Format;
+use Pensoft\Knowledgelibrary\Models\Data;
 
 function onStart(){
     $this['formats'] = Format::get();
-    $this['records'] = Data::orderBy('date', 'desc')->orderBy('title', 'asc')->get();
+    $this['records'] = Data::where('project_id', 2)->orderBy('date', 'desc')->orderBy('title', 'asc')->get();
 }
 ?>
 ==
@@ -62,7 +62,6 @@ function onStart(){
             </div>
         </div>
     </div>
-{{records}}
     <div class="row" id="recordsContainer">
         {% partial 'library_records' records=records %}
     </div>
