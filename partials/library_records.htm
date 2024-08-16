@@ -9,8 +9,8 @@
         <div class="col-md col-xs-12">
             <div class="library_format">{{record.format.title}}</div>
             <div class="library_title">{{record.title}}</div>
-            {% if record.authors %}
-                <div class="library_param_row"><label>Authors:</label> {{ record.authors | replace({',': ', '}) }}</div>
+            {% if record.pretty_authors %}
+                <div class="library_param_row"><label>Authors:</label> {{ record.pretty_authors | raw }}</div>
             {% endif %}
             {% if record.project %}
                 <div class="library_param_row"><label>Project:</label> {{ record.project.title }}</div>
@@ -37,7 +37,9 @@
                 <div class="library_param_row"><label>Source:</label> {{ record.source }}</div>
             {% endif %}
             {% if record.doi %}
-                <div class="library_param_row end-md start-xs"><label>URL/DOI:</label> <a href="{{ record.doi }}" target="_blank">{{ record.doi }}</a></div>
+                <div class="library_param_row end-md start-xs"><label>URL/DOI:</label> <a href="{{ record.doi }}" target="_blank">
+                    {{ record.doi|length > 50 ? record.doi|slice(0, 50) ~ '...' : record.doi  }}
+                </a></div>
             {% endif %}
 
             {% if record.file or record.file_langs or record.web_page %}

@@ -429,11 +429,17 @@ function requestFormLibrary() {
 	})
 }
 
-function requestFormPartners() {
-	$('#myPartnersForm').on('click', 'a', function () {
-		var $form = $(this).closest('form');
-		$form.request();
-	})
+function expand(el, label){
+    var link = $(el);
+    link.parent().parent().find('.toogle-' +  label).slideToggle('slow', function() {
+        if ($(this).is(':visible')) {
+            link.text('View less');
+            link.parent().parent().find('.hide-' +  label).hide();
+        } else {
+            link.text('View all');
+            link.parent().parent().find('.hide-' +  label).show();
+        }
+    });
 }
 
 function isScrolledIntoView(elem) {
