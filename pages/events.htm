@@ -79,7 +79,7 @@ $this['slug'] = $this->param('slug');
         <div class="row" id="listView">
             <div class="events_list_container">
                 {% for entry in entries %}
-                {% set url = entry.url ?  entry.url : '/events/' ~ entry.slug %}
+                {% set url = entry.url ?  entry.url : '' %}
                 <div class="row entry_item middle-xs">
                     <div class="col-md-1 col-xs-12 date_container">
                         <span class="date_day">{{entry.start|date("j")}}</span>
@@ -88,11 +88,11 @@ $this['slug'] = $this->param('slug');
                     </div>
                     <div class="col-md-9 col-xs-12 body_container">
                         {% if entry.cover_image %}
-                        <a href="{{'events'|page}}/{{entry.slug}}">
+                        <a href="{{url}}" target="_blank">
                             <img src="{{entry.cover_image.getThumb(auto, auto, {'mode': 'crop'})}}">
                         </a>
                         {% endif %}
-                        <a href="{{'events'|page}}/{{entry.slug}}" class="date_week">
+                        <a href="{{url}}" target="_blank" class="date_week">
                             {{entry.title|raw}}
                             <div class="body">
                                 {{ entry.description|length > 110 ? entry.description|striptags|slice(0, 110)|replace({"&nbsp;": " ", ".": ". "}) ~ '...' : entry.description|striptags|replace({"&nbsp;": " ", ".": ". "})  }}
@@ -101,7 +101,7 @@ $this['slug'] = $this->param('slug');
 
                     </div>
                     <div class="col-md-2 col-xs-12 read-more-events center-md center-xs">
-                        <a href="{{'events'|page}}/{{entry.slug}}" class="read-more">Read more</a>
+                        <a href="{{url}}" target="_blank" class="read-more">Read more</a>
                     </div>
                 </div>
                 {% endfor %}
@@ -155,38 +155,6 @@ $this['slug'] = $this->param('slug');
 
 {% else %}
 
-{% if entry %}
-<div class=" container single-news-item single-events-item">
 
-    <div class="col-xs-12 news-content event-content">
-        <h1 class="news-title event-title">{{entry.title}}</h1>
-        <div class="row date-location">
-            <div class="single-event-bubble">
-                <div class="bubble-text bubble-date">
-                    {{ entry.start|date('d F Y') }}
-                </div>
-            </div>
-            <div class="single-event-bubble">
-                <div class="bubble-text bubble-location">
-                    {{ entry.place }}
-                </div>
-            </div>
-        </div>
-
-        {% if entry.cover_image %}
-        <img src="{{entry.cover_image.getThumb(auto, auto, {'mode': 'crop'})}}" class="single_event_image">
-        {% endif %}
-
-        {{entry.description|raw}}
-    </div>
-
-    <div class="col-xs col-md start-md start-xs share_container">
-        <span class="share_label">Share</span>
-        <a href="http://twitter.com/share?text={{entry.title}}&url={{page_url}}" target="_blank" class="pr p-twitter small"></a>
-        <a href="https://www.facebook.com/sharer/sharer.php?u={{page_url}}&amp;src=sdkpreparse" target="_blank" class="pr p-facebook small"></a>
-    </div>
-
-</div>
-{% endif %}
 
 {% endif %}

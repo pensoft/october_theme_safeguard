@@ -78,9 +78,6 @@ $(document).ready(function() {
         }
     });
 
-    $('.work_packages .accordion-content').each(function( index, value ) {
-        $(value).find('a').attr( "onclick", "window.open(this.href, '_blank');" )
-    });
 
     $('.nav-item').children("a").each(function(){
         if($(this).attr('data-toggle') == 'dropdown'){
@@ -139,10 +136,6 @@ $(document).ready(function() {
         }
     });
 
-
-    $('.work_packages .accordion-content').each(function( index, value ) {
-        $(value).find('a').attr( "onclick", "window.open(this.href, '_blank');" )
-    });
 
 
 	onHashChange();
