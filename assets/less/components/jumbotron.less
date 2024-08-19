@@ -124,6 +124,7 @@
     &:hover{
         box-shadow: 0px 0px 37px #00706830;
     }
+
 }
 
 .initiative_item_detail{
@@ -296,6 +297,11 @@
                 }
             }
         }
+
+        .source_info{
+            color: @link-color;
+            font-size: 0.7em;
+        }
     }
 
     .types_pollinators{
@@ -308,7 +314,7 @@
         .pollinators_item{
             width: 464px;
             max-width: 93%;
-            min-height: 190px;
+            min-height: 220px;
             box-shadow: 0px 0px 6px #00000029;
             margin-bottom: 40px;
             display: flex;
@@ -326,6 +332,53 @@
             p{
                 padding: 0 20px;
             }
+
+            .readmore {
+                position: relative;
+                max-height: 150px;
+                overflow: hidden;
+                //transition: all 1s ease-in-out;
+                p{
+                    text-align: center;
+                }
+
+            }
+
+            .readmore.expand{
+                max-height: 5000px !important;
+                transition:max-height 0.35s ease-in-out;
+            }
+
+            .readmore-link{
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                display: block;
+                width:100%;
+                height: 30px;
+                text-align: center;
+                color: @link-color;
+                font-weight:bold;
+                font-size:16px;
+                padding-top: 150px;
+                background-image: linear-gradient(to bottom, transparent, white);
+                cursor: pointer;
+            }
+
+            .readmore-link.expand {
+                position: relative;
+                background-image: none;
+                padding-top:10px;
+                height:30px;
+            }
+
+            .readmore-link:after {
+                content:"Read more \25BC";
+            }
+            .readmore-link.expand:after{
+                content:"Read less \25B2";
+            }
+
         }
 
         .col-md-4{

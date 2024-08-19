@@ -3,7 +3,7 @@
     padding: 0!important;
     display: flex;
     justify-content: start;
-    &:nth-child(2){
+    &:nth-child(even){
         justify-content: end;
     }
 }
@@ -17,7 +17,7 @@
     font-size: 17px;
     display: flex!important;
     flex-wrap: nowrap!important;
-    height: 90%;
+    height: 93%;
     width: 97%;
     margin-bottom: 50px!important;
     //position: absolute;
@@ -56,6 +56,16 @@
                 word-break: break-all;
             });
         }
+
+        .view_more{
+            font-size: 0.8em;
+            font-weight: bold;
+        } 
+        
+        .view_more_authors{
+            font-size: 0.8em;
+            font-weight: bold;
+        } 
     }
     .btn.btn-primary{
         text-align: center;
@@ -80,6 +90,15 @@
         background: #ededed;
         box-shadow: 0px 0px 22px #C9C9C966;
         border-radius: 6px;
+    }
+
+    .col-md{
+        position: relative;
+        .library_param_row:last-of-type{
+         position: absolute;
+         bottom: 0;
+         display: contents;   
+        }
     }
 }
 

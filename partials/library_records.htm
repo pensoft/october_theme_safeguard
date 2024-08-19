@@ -3,7 +3,7 @@
     <div class="row library_item">
         {% if record.cover %}
         <div class="col-md-4 col-xs-12">
-            <img src="{{record.cover.thumb(262, 255, {'mode': 'crop'})}}">
+            <img src="{{record.cover.thumb(262, auto, {'mode': 'crop'})}}">
         </div>
         {% endif %}
         <div class="col-md col-xs-12">
@@ -37,8 +37,8 @@
                 <div class="library_param_row"><label>Source:</label> {{ record.source }}</div>
             {% endif %}
             {% if record.doi %}
-                <div class="library_param_row end-md start-xs"><label>URL/DOI:</label> <a href="{{ record.doi }}" target="_blank">
-                    {{ record.doi|length > 50 ? record.doi|slice(0, 50) ~ '...' : record.doi  }}
+                <div class="library_param_row start-md start-xs"><label>URL/DOI:</label> <a href="{{ record.doi }}" target="_blank">
+                    {{ record.doi|length > 30 ? record.doi|slice(0, 30) ~ '...' : record.doi  }}
                 </a></div>
             {% endif %}
 
