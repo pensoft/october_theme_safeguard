@@ -137,12 +137,6 @@ $(document).ready(function() {
     });
 
 
-
-	onHashChange();
-	$(window).on("hashchange", function() {
-		onHashChange();
-	});
-
 	$('.subscribe-items a').attr('data-aos', 'fade-up');
 	// $('.icons a').attr('data-aos', 'fade-up');
 	$('.about h1.display-1').attr('data-aos', 'fade-up');
@@ -348,19 +342,6 @@ function expandReadMore(el){
         });
     }
     return false;
-}
-
-function onHashChange(){
-	$("path").removeClass('active_path');
-	$(".accordion-content").hide();
-	var caseStudiesHashTitle = location.hash;
-
-	if(caseStudiesHashTitle){
-		var caseStudiesTitle = caseStudiesHashTitle.substring(1, caseStudiesHashTitle.length);
-		$("path[title='"+caseStudiesTitle.toUpperCase()+"']").addClass('active_path');
-
-
-	}
 }
 
 function encodeURIObject(data){

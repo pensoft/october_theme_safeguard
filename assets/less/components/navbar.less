@@ -208,6 +208,7 @@
                         background: @yellow-color;
                         border-radius: 10px;
                         margin-right: 6px;
+                        margin-top: 5px;
                         width: 38px;
                         height: 38px;
                         text-align: center;
@@ -222,16 +223,16 @@
         }
 
         .search-btn{
-            color: @white-color!important;
-            background: none!important;
+            background: url("../../assets/images/Icon-search.svg") center no-repeat!important;
+            background-size: 20px;
 
             &:hover{
-                color: @light-color!important;
+                opacity: 0.6;
             }
 
-            &:before {
-                content: "\ea82";
-            }
+            //&:before {
+            //    content: "\ea82";
+            //}
         }
     }
 
@@ -283,7 +284,7 @@
                             margin-top: -5px;
                             width: 10px;
                             height: 10px;
-                            background: url('../../assets/images/nav-menu-arrow.svg') no-repeat center center;
+                            background: url('../../assets/images/Icon ionic-ios-arrow-forward.svg') no-repeat center center;
                             background-size: contain;
                             pointer-events: none;
                             transition: transform 0.3s ease;
@@ -326,104 +327,6 @@
         }
     });
 }
-
-//.home{
-    .navbar{
-        background: @dark-color!important;
-        color: @white-color!important;
-        backdrop-filter: blur(29px);
-
-
-        .nav-item {
-            text-align: left;
-
-            a{
-                color: @white-color!important;
-                .breakpoint-large-down({
-                    color: white!important;
-                });
-            }
-            a.p-search{
-                color: #171717;
-            }
-
-            &.dropdown {
-                &:hover > .dropdown-menu {
-                    display: block;
-                }
-
-                /* navbar arrows**/
-                position: relative;
-                margin-right: 20px;
-
-                &:after {
-                    background: url('../../assets/images/Icon ionic-ios-arrow-forward.svg') no-repeat center center!important;
-                }
-
-                &:hover:after {
-                    transform: rotate(180deg);
-                    margin-top: -5px;
-                    opacity: 0.6;
-                }
-            }
-        }
-    }
-
-    .full-width .search{
-        background: none;
-    }
-
-
-    .search-and-social-media{
-        ul{
-            padding: 0 30px!important;
-        }
-        min-width: fit-content;
-        .navbar-nav{
-            li{
-                display: inline-flex;
-                align-items: center;
-                justify-content: space-between;
-                a{
-                    &.pr{
-                        &:not(.p-search){
-                            color: @white-color!important;
-                        }
-                        background: @dark-color;
-                        border-radius: 10px;
-                        margin-right: 6px;
-                        width: 38px;
-                        height: 38px;
-                        text-align: center;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        font-weight: normal;
-                    }
-                    &:hover{
-                        background: @link-color;
-                        color: @white-color!important;
-                    }
-                }
-            }
-        }
-
-        .search-btn{
-
-            color: @white-color!important;
-            background: none!important;
-
-            &:hover{
-                color: @light-color!important;
-            }
-
-            &:before {
-                content: "\ea82";
-            }
-        }
-    }
-//}
-
 
 .full-width .search {
     position: absolute;
@@ -492,10 +395,10 @@
     width: 29px;
     height: 29px;
     position: fixed;
-    top: 35px;
+    top: 24px;
     right: 47px;
     cursor: pointer;
-    color: @white-color;
+    color: #144d48;
     background: @white-color;
     border-radius: 50%;
     font-size: 18px;

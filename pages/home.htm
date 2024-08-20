@@ -2,7 +2,7 @@ url = "/"
 layout = "default"
 title = "Safe-Hub"
 is_hidden = 0
-meta_description = "The Safe-Hub project"
+meta_description = "Safe-Hub"
 robot_index = "index"
 robot_follow = "follow"
 
@@ -54,11 +54,16 @@ function onStart(){
                     </a>
                 </div>-->
                 <div class="col-md-12 col-xs-12 news-content">
-                    <p class="news-date">{{ highlight.published_at|date('d M Y') }}</p>
-                    <a href="/events/{{highlight.slug}}"><div class="news-title">{{ highlight.title|length > 150 ? highlight.title|slice(0, 150)|replace({"&nbsp;": " ", ".": ". "}) ~ '...' : highlight.title|replace({"&nbsp;": " ", ".": ". "})  }}</div></a>
+                    <div class="">
+                        <p class="news-date">{{ highlight.start|date('d M Y') }}</p>
+                        <a href="{{highlight.url}}">
+                            <div class="news-title">{{ highlight.title|length > 30 ? highlight.title|slice(0, 30)|replace({"&nbsp;": " ", ".": ". "}) ~ '...' : highlight.title|replace({"&nbsp;": " ", ".": ". "})  }}</div>
+                        </a>
+                        <div class="news-description">{{ highlight.description|length > 70 ? highlight.description|striptags|slice(0, 70)|replace({"&nbsp;": " ", ".": ". "}) ~ '...' : highlight.description|striptags|replace({"&nbsp;": " ", ".": ". "})  }}</div>
+                    </div>
                     <!--<div class="news-description">{{ highlight.content | raw }}</div>-->
                     <div class="row read-more-row">
-                        <a href="/events/{{highlight.slug}}" class="read-more">{{'Read more' |_}}</a>
+                        <a href="{{highlight.url}}" class="read-more">{{'Read more' |_}}</a>
                     </div>
                 </div>
             </div>

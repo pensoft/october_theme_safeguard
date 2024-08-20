@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('#searchInput').selectize({
+    var search_i = $('#searchInput').selectize({
         plugins: ["clear_button", "remove_button", "restore_on_backspace"],
         create: true,
         valueField: 'value',
@@ -70,22 +70,45 @@ $(document).ready(function() {
                 from.datepicker("option", "maxDate", getDate(this));
             });
 
-    $('#applyFilter').on('click', updateLibraryList());
-
-    $('#clearFilter').click(function() {
-        $('#dateFrom').val('');
-        $('#dateTo').val('');
-        $('#searchInput').val('');
-        $('#sortFormat').val(0);
-        $('#sortProject').val(0);
-        updateLibraryList();
-    });
-
-    $('#sortFormat, #sortProject').selectize({
+    var select = $('#sortFormat, #sortProject').selectize({
         onChange: function(value) {
             updateLibraryList();
         }
     });
+
+    $('#applyFilter').on('click', updateLibraryList());
+
+    $('#clearFilter').on('click',function() {
+        $('#dateFrom').val('');
+        $('#dateTo').val('');
+        // $('#searchInput').val('');
+        // $('#sortFormat').val(0);
+        // $('#sortProject').val(0);
+        var selectize = select[0].selectize;
+        var selectize1 = select[1].selectize;
+
+        var searchinput = search_i[0].selectize;
+        searchinput.clear();
+        selectize.setValue(0);
+        selectize1.setValue(0);
+        updateLibraryList();
+    });
+
+    var urlParams = window.location.search.substring(1).split('&');
+    if(urlParams.length){
+        for(i = 0; i < urlParams.length; i++){
+            var paramArr = urlParams[i].split('=');
+            var paramKey = paramArr[0];
+            var paramVal = paramArr[1];
+            var selectize = select[i].selectize;
+            selectize.setValue(paramVal);
+        }
+        updateLibraryList();
+
+    }
+
+
+
 });
 
 function getDate( element ) {
@@ -125,6 +148,19 @@ function updateLibraryList() {
         },
         update: { 'library_records': '#recordsContainer' }
     });
+}
+
+
+function getUrlParams(){
+    var params = window.location.search.substring(1).split('&');
+    console.log(params);
+    var url = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    // var urlparam = [];
+    // for (var i = 0; i < url.length; i++) {
+    //     urlparam[] = url[i];
+    //
+    // }
+    // return urlparam;
 }
 
 
