@@ -1,5 +1,7 @@
 .distribution-maps{
-
+    .selectize-control{
+        z-index: 1001 !important;
+    }
     .filters{
         margin-bottom: 40px;
         padding: 40px;
@@ -8,17 +10,33 @@
 
         .search-field{
             margin-bottom: 20px;
+            position: relative;
             .taxon-search, .custom-multiselect-placeholder{
                 padding: 20px;
                 background-color: #fff;
                 border-radius: 5px;
-                font-size: 16px;
-                font-family: 'Muli';
+                font-size: 16px !important;
+                font-family: 'Muli' !important;
                 border:  none !important;
+                position: relative;
+            }
+            &:after {
+                content: '';
+                background: url("../../assets/images/search-grey.svg") center center no-repeat;
+                width: 20px;
+                height: 20px;
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+                pointer-events: none;
             }
         }
 
         .clear-filter{
+            display: flex;
+            justify-content: center;
+            align-items: center;
             a{
                 font-size: 0.9em;
                 background: url("../../assets/images/trash-can-svgrepo-com.svg") left center no-repeat;
@@ -26,20 +44,50 @@
                 padding-left: 22px;
                 color: #00A89D;
                 cursor: pointer;
+                font-size: 16px;
                 &:hover{
                     opacity: 0.65;
                 }
             }
         }
 
-        .selectize-input{
-            padding: 10px !important;
-            background-color: #fff !important;
-            border-radius: 5px !important;
-            font-size: 16px !important;
-            font-family: 'Muli' !important;
-            border:  none !important;
+    .selectize-input {
+        padding: 10px !important;
+        background-color: #fff !important;
+        border-radius: 5px !important;
+        font-size: 16px !important;
+        font-family: 'Muli', sans-serif !important;
+        border: none !important;
+        position: relative !important;
+
+        &::after {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 50%;
+            right: 15px;
+            width: 0;
+            height: 0;
+            transform: translateY(-50%);
+            border-style: solid;
+            border-width: 5px 5px 0 5px;
+            border-color: grey transparent transparent transparent;
+            pointer-events: none;
         }
+
+        input {
+            font-size: 16px !important;
+            font-family: 'Muli', sans-serif !important;
+        }
+    }
+
+    .selectize-input.input-active {
+        &::after {
+            border-width: 0 5px 5px 5px;
+            border-color: transparent transparent grey transparent;
+        }
+    }
+
 
     }
     
@@ -49,7 +97,8 @@
         padding: 20px;
         height: 500px !important;
         li {
-            padding: 16px 4px;
+            padding: 16px 8px;
+            cursor: pointer;
             a{
                 font-size: 16px;
                 font-family: 'Muli';
@@ -57,7 +106,7 @@
             }
             &:hover{
                 background-color: #E7F2F1;
-                border-radius: 5px;
+                font-weight: bold;
             }
         }
     }
@@ -78,18 +127,32 @@
         }
     }
     
+    .years-txt{
+        font-size: 16px;
+        font-family: 'Muli';
+        color: #656565;
+    }
     .selected-taxon{
+        display: flex;
+        justify-content: center;
+        align-items: center;
         background-color: #E7F2F1;
         padding: 7px;
         border-radius: 5px;
         margin: 10px 10px 10px 0px;
+        color: #00A89D;
     }
-    
+    .color-dot {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%; /* For a circular dot, or use 2px for a square */
+        margin-right: 10px;
+        background-color: #000; /* Default color, will be overwritten */
+    }
     .remove-taxon{
-        background: url("../../assets/images/trash-can-svgrepo-com.svg") left center no-repeat;
-        background-size: 16px;
-        padding-left: 22px;
-        margin-left: 6px;
+        font-size: 18px;
+        margin-left: 14px;
         color: #00A89D;
         cursor: pointer;
         &:hover{
@@ -114,7 +177,7 @@
         width: 100%;
         height: 100%;
         background: rgba(255, 255, 255, 0.8);
-        z-index: 1000;
+        z-index: 10000;
         display: flex;
         justify-content: center;
         align-items: center;
