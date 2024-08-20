@@ -12,7 +12,7 @@
     box-shadow: 0px 0px 22px #C9C9C966;
     border-radius: 6px;
     background: white;
-    padding: 27px!important;
+    padding: 18px 8px 36px 8px!important;
     color: #535353!important;
     font-size: 17px;
     display: flex!important;
@@ -96,8 +96,7 @@
         position: relative;
         .library_param_row:last-of-type{
          position: absolute;
-         bottom: 0;
-         display: contents;   
+         bottom: -18px;
         }
     }
 }
@@ -124,10 +123,13 @@
 
     .clear-filter{
         a{
-            font-size: 0.9em;
+            font-size: 0.8em;
             background: url("../../assets/images/trash-can-svgrepo-com.svg") left center no-repeat;
             background-size: 16px;
             padding-left: 22px;
+            &:hover{
+                opacity: 0.5!important;
+            }
         }
     }
 
@@ -142,6 +144,15 @@
         .breakpoint-large-down({
             flex-direction: column;
         });
+
+        .row:nth-of-type(1){
+            width: 100%;
+            .col-xs-12{
+                display: flex;
+                align-items: center;
+                padding: 0;
+            }
+        }
     }
 
     /*
@@ -272,6 +283,7 @@
             box-shadow: none!important;
             font-size: 13px!important;
             outline: none;
+            max-width: 127px;
         }
 
         .item[data-value="0"] {
@@ -286,6 +298,7 @@
             box-shadow: none !important;
             color: #535353 !important;
             outline: none;
+            max-width: 85px;
             &::placeholder {
                 color: #cacaca;
                 opacity: 1; /* Firefox */
@@ -338,7 +351,7 @@
             color: @link-color !important;
         }
         &.sort-dropdown{
-            width: 160px;
+            width: 140px;
             max-width: 100%;
             .breakpoint-large-down({
                 width: 100%;
@@ -364,6 +377,7 @@
     }
 
     .clear-filter{
+        margin: 0 10px;
         .breakpoint-large-down({
             margin: 10px auto;
         });

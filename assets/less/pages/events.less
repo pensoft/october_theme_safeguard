@@ -130,11 +130,13 @@
 }
 
 .events .events_tabs{
-    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: end;
-    color: @link-color;
+    color: #00a89d;
+    background: #def4f2;
+    width: fit-content;
+    border-radius: 5px;
+    float: right;
     .divider{
         margin: 0 20px;
         font-size: 20px;
@@ -150,6 +152,7 @@
         color: @black-color;
         padding-left: 40px;
         float: left;
+        transition: all 0.3s ease-in;
         .breakpoint-large-down({
             margin-left: 0px;
         });
@@ -161,10 +164,12 @@
             height: 25px;
             width: 25px;
             line-height: 25px;
-            border-radius: 5px;
+            border-radius: 5px 0 0 5px;
             &.active{
                 background: @link-color url("../../assets/images/list-view-icon-white.svg") center no-repeat;
                 background-size: 22px;
+                border-radius: 5px;
+                transform: translateX(0);
             }
             &.hover{
                 opacity: 0.7;
@@ -178,10 +183,12 @@
             height: 25px;
             width: 25px;
             line-height: 25px;
-            border-radius: 5px;
+            border-radius: 0 5px 5px 0;
             &.active{
                 background: @link-color url("../../assets/images/calendar-view-icon-white.svg") center no-repeat;
                 background-size: 22px;
+                border-radius: 5px;
+                transform: translateX(0px);
             }
             &.hover{
                 opacity: 0.7;
