@@ -390,10 +390,26 @@
             }
 
             .readmore-link:after {
-                content:"Read more \25BC";
+                content:" ";
+                height: 0px;
+                width: 0px;
+                border: none;
+                display: inline-block;
+                margin: 0 0 1px 6px;
+                border-top: 7px solid #00a89d;
+                border-left: 6px solid rgba(0, 168, 157, 0);
+                border-right: 6px solid rgba(0, 168, 157, 0);
             }
             .readmore-link.expand:after{
-                content:"Read less \25B2";
+                content:" ";
+                height: 0px;
+                width: 0px;
+                border: none;
+                display: inline-block;
+                margin: 0 0 1px 6px;
+                border-bottom: 7px solid #00a89d;
+                border-left: 6px solid rgba(0, 168, 157, 0);
+                border-right: 6px solid rgba(0, 168, 157, 0);
             }
 
         }
