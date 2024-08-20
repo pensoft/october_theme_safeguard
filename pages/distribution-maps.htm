@@ -1,14 +1,33 @@
-title = "Distribution maps"
+url = "/distribution-map"
 layout = "default"
-url = "/distribution-maps"
+title = "Distribution map"
 
 [siteSearchInclude]
 
 [pollinatorMap]
 
+[jumbotron]
+jumbotron = "map-intro"
+background = "transperant"
+templates = "template3"
+description_limit = 0
+
+[jumbotron mapReferences]
+jumbotron = "map-references"
+background = "transperant"
+templates = "template3"
+description_limit = 0
 ==
 {% component 'siteSearchInclude' %}
 
+<div class="container-fluid map-intro">
+    {% component 'jumbotron' %}
+</div> 
+
 <div class="container-fluid distribution-maps">
     {% component 'pollinatorMap' %}  
+</div>
+
+<div class="container-fluid map-references">
+    {% component 'mapReferences' %}
 </div>
