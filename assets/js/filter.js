@@ -100,10 +100,12 @@ $(document).ready(function() {
             var paramArr = urlParams[i].split('=');
             var paramKey = paramArr[0];
             var paramVal = paramArr[1];
-            var selectize = select[i].selectize;
-            selectize.setValue(paramVal);
+            if(typeof paramVal !== 'undefined'){
+                var selectize = select[i].selectize;
+                selectize.setValue(paramVal);
+                updateLibraryList();
+            }
         }
-        updateLibraryList();
 
     }
 
