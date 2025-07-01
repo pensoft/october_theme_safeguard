@@ -79,7 +79,7 @@ $this['slug'] = $this->param('slug');
         <div class="row" id="listView">
             <div class="events_list_container">
                 {% for entry in entries %}
-                {% set url = entry.url ?  entry.url : '' %}
+
                 <div class="row entry_item middle-xs">
                     <div class="col-md-1 col-xs-12 date_container">
                         <span class="date_day">{{entry.start|date("j")}}</span>
@@ -88,11 +88,11 @@ $this['slug'] = $this->param('slug');
                     </div>
                     <div class="col-md-9 col-xs-12 body_container">
                         {% if entry.cover_image %}
-                        <a href="{{url}}" target="_blank">
+                        <a href="/events/{{entry.slug}}">
                             <img src="{{entry.cover_image.getThumb(auto, auto, {'mode': 'crop'})}}">
                         </a>
                         {% endif %}
-                        <a href="{{url}}" target="_blank" class="date_week">
+                        <a href="/events/{{entry.slug}}" class="date_week">
                             {{entry.title|raw}}
                             <div class="body">
                                 {{ entry.description|length > 110 ? entry.description|striptags|slice(0, 110)|replace({"&nbsp;": " ", ".": ". "}) ~ '...' : entry.description|striptags|replace({"&nbsp;": " ", ".": ". "})  }}
@@ -101,7 +101,7 @@ $this['slug'] = $this->param('slug');
 
                     </div>
                     <div class="col-md-2 col-xs-12 read-more-events center-md center-xs">
-                        <a href="{{url}}" target="_blank" class="read-more">Read more</a>
+                        <a href="/events/{{entry.slug}}" class="read-more">Read more</a>
                     </div>
                 </div>
                 {% endfor %}
@@ -127,17 +127,17 @@ $this['slug'] = $this->param('slug');
 
                     <div class="col-md-9 col-xs-12">
                         {% if entry.cover_image %}
-                        <a href="{{'events'|page}}/{{entry.slug}}">
+                        <a href="/events/{{entry.slug}}">
                             <img src="{{entry.cover_image.getThumb(auto, auto, {'mode': 'crop'})}}">
                         </a>
                         {% endif %}
 
-                        <a href="{{'events'|page}}/{{entry.slug}}" class="date_week">{{entry.title|raw}}</a>
+                        <a href="/events/{{entry.slug}}" class="date_week">{{entry.title|raw}}</a>
                         <div class="body">{{ entry.description|length > 110 ? entry.description|striptags|slice(0, 110)|replace({"&nbsp;": " ", ".": ". "}) ~ '...' : entry.description|striptags|replace({"&nbsp;": " ", ".": ". "})  }}</div>
 
                     </div>
-                    <div class="col-md-2 col-xs-12 end-md center-xs">
-                        <a href="{{'events'|page}}/{{entry.slug}}" class="read_more">&nbsp;</a>
+                    <div class="col-md-2 col-xs-12 read-more-events center-md center-xs">
+                        <a href="/events/{{entry.slug}}" class="read-more">Read more</a>
                     </div>
                 </div>
 
@@ -155,6 +155,52 @@ $this['slug'] = $this->param('slug');
 
 {% else %}
 
+<div class="container" style="max-width: 950px;">
+    <div class="row single-news-item">
+        {% if entry.image %}
+        <div class="col-md col-xs-12">
+            <img class="content left" src="{{ entry.image|crop_image|resize(555, auto, { mode: 'crop' }) }}" />
+        </div>
+        {% endif %}
+
+        <div class="col-md col-xs-12">
+            <div class="news-title">
+                <h1 class="single-new-title">{{entry.title}}</h1>
+            </div>
+            <div class="text-published">{{entry.start|date("d M Y")}} - {{entry.end|date("d M Y")}}</div>
+            <div class="text-place">{{entry.place}}</div>
+
+        </div>
+        <div class="col-xs-12">
+            <div class="content">
+                {{entry.description|raw}}
+            </div>
+
+        </div>
+        <div class="col-xs-12">
+
+            {% if entry.url %}
+            <br><br><a href="{{entry.url}}" class="read_more" target="_blank">Go to event website</a>
+            {% endif %}
+
+
+
+            <div class="row share_container middle-xs">
+                <div class="col-lg-1 col-xs-2 start-xs">Share</div>
+                <div class="col-xs-10">
+                    <a href="http://twitter.com/share?text={{entry.title}}&url={{page_url}}" target="_blank" class="btn p-primary pr p-twitter medium"></a>
+
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{page_url}}&amp;src=sdkpreparse" target="_blank" class="btn pr p-primary p-facebook medium"></a>
+
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url={{page_url}}" target="_blank" class="btn pr p-primary p-linkedin medium"></a>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
 
 
 {% endif %}

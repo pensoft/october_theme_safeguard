@@ -1,0 +1,56 @@
+url = "/buzzing-tables"
+layout = "default"
+title = "Buzzing tables"
+
+[siteSearchInclude]
+
+[jumbotron]
+jumbotron = "below-you-can-find-more-information-safeguard-buzzing-tables-which-have-already-taken-place"
+background = "transperant"
+templates = "template3"
+description_limit = 0
+==
+<?php
+use Pensoft\Accordions\Models\Category;
+use Pensoft\Accordions\Models\Item;
+use Pensoft\Calendar\Models\Entry;
+use Carbon\Carbon;
+
+function onStart(){
+    $this['accordion_items'] = Item::where('category_id', 8)->get();
+    $this['entries'] = Entry::where('identifier', '=', 3)->orderBy('start', 'asc')->get();
+}
+?>
+==
+{% component 'siteSearchInclude' %}
+
+<div class="container">
+    <div class="row work_packages">
+        <div class="col-xs-12">
+            {% for item in accordion_items %}
+            <div class="accordion-border">
+                <div class="row middle-xs accordion-toggle">
+
+                    <div class="col-xs start-xs">{{item.title}}</div>
+
+                    <div class="col-xs-2 end-xs plusminus"><span class="plus"></span></div>
+                </div>
+
+                <div class="accordion-content" style="display: none;">
+                    {{item.body|raw}}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+
+    <div class="buzz">
+        <h3>Below you can find more information on the Safeguard Buzzing tables, which have already taken place.</h3>
+    </div>
+
+
+    {% component 'jumbotron' %}
+
+</div>

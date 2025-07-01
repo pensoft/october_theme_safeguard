@@ -1,3 +1,97 @@
+.single-news-item{
+    position: relative;
+    .text-published{
+        font-weight: bold;
+        background: url("../../assets/images/calendar.svg") left no-repeat;
+        background-size: contain;
+        padding-left: 40px;
+        color: @link-color;
+
+    }
+
+    .text-place{
+        font-weight: bold;
+        color: @link-color;
+        background: url("../../assets/images/location.svg") left no-repeat;
+        background-size: contain;
+        padding-left: 40px;
+
+    }
+
+    .news_content_wrapper{
+        padding-right: 20px;
+        ul{
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            li{
+                background: url("../../assets/images/bullet_arrow.svg") left no-repeat;
+                background-size: 16px;
+                background-position: left 6px;
+                padding-left: 30px;
+                margin:5px 0 10px 0;
+            }
+        }
+        h2, h3{
+            font-weight: bold;
+
+            font-size: 22px;
+        }
+
+    }
+
+    .col-xs{
+        padding-left: 0;
+    }
+
+    .content{
+        margin-top: 50px;
+    }
+
+    .share_container{
+        margin-top: 50px;
+        .col-xs-1, .col-xs-2, .col-xs-3{
+            color: @dark-color;
+            font-weight: bold;
+        }
+        a{
+            padding: 0!important;
+            &.btn.p-primary{
+                width: 45px;
+                height: 45px;
+                font-size: 30px!important;
+                line-height: 45px;
+            }
+
+        }
+        .btn.p-primary:hover{
+            background: @dark-color!important;
+
+        }
+    }
+    .content.left{
+        .breakpoint-large-down({
+            padding-bottom: 0px;
+        });
+    }
+
+    img{
+        max-width: 100% !important;
+        border-radius: 20px;
+        //object-fit: contain;
+    }
+
+    h1{
+        text-transform: none;
+    }
+
+    .read_more{
+        background-size: contain;
+        &:hover{
+            opacity: 0.7;
+        }
+    }
+}
 
 nav:not(.navbar){
     width: 100%;
