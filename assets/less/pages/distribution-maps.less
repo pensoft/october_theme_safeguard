@@ -1,6 +1,9 @@
 .distribution-maps{
     .selectize-control{
         z-index: 1001 !important;
+        .breakpoint-large-down({
+            z-index: unset !important;
+        });
     }
     .filters{
         margin-bottom: 40px;
@@ -108,6 +111,10 @@
                 font-weight: bold;
             }
         }
+        .breakpoint-large-down({
+            height: 260px !important;
+            padding: unset;
+        });
     }
 
     .year-container{

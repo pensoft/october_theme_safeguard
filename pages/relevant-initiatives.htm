@@ -1,6 +1,6 @@
-title = "Relevant initiatives"
-layout = "default"
 url = "/relevant-initiatives/:slug?|[a-zA-Z\-0-9]"
+layout = "default"
+title = "Relevant initiatives"
 
 [siteSearchInclude]
 ==
@@ -25,6 +25,7 @@ function onStart(){
     {% if slug %}
         <h1>{{category.title}}</h1>
         <div class="row">
+        {% if category.slug != 'national-pollinator-strategies' %}
             {% for initiative in key_initiatives %}
             <div class="col-md-4 col-xs-12">
                 <div class="initiative_item_detail" href="{{'relevant-initiatives'|page}}/{{category.slug}}">
@@ -39,16 +40,19 @@ function onStart(){
                 </div>
             </div>
             {% endfor %}
+            {% endif %}
         </div>
     {% else %}
         <div class="row">
             {% for category in categories %}
+            {% if category.slug != 'national-pollinator-strategies' %}
             <div class="col-md-3 col-xs-12">
                 <a class="initiative_item" href="{{'relevant-initiatives'|page}}/{{category.slug}}">
                     <img src="{{category.cover.path}}">
                     <h3>{{category.title}}</h3>
                 </a>
             </div>
+            {% endif %}
             {% endfor %}
         </div>
 
