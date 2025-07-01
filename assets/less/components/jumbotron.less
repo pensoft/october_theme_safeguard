@@ -679,31 +679,42 @@
 
     .container{
         padding: 0;
+
+        .breakpoint-huge-down({
+            padding: 50px 0!important;
+        });
     }
 
     .buzz_date{
-        font-weight: bold;
-        background: url("../../assets/images/calendar.svg") left no-repeat;
-        background-size: 23px;
-        padding-left: 30px;
-        color: @link-color;
+        position: absolute;
+        top: -205px;
+        left: 5vw;
+        font: normal normal normal 17px/30px Muli;
+        letter-spacing: 0px;
+        color: #EFEFEF;
     }
 
-    .go-back-link{
-        a{
 
-            font-weight: bold;
-            i{
-                width: 13px;
-                height: 10px;
-                content: '';
-                background: url("../../assets/images/comp-80.svg") center no-repeat;
-                background-size: contain;
-                transform: rotate(90deg);
-                display: inline-block;
-            }
+}
 
+.go-back-link{
+    position: absolute;
+    top: 50px;
+    max-width: 90vw;
+    left: 5vw;
+    a{
+        font-weight: bold;
+        font-size: 16px;
+        i{
+            width: 13px;
+            height: 10px;
+            content: '';
+            background: url("../../assets/images/comp-80.svg") center no-repeat;
+            background-size: contain;
+            transform: rotate(90deg);
+            display: inline-block;
         }
+
     }
 }
 
@@ -718,3 +729,21 @@
         });
     }
 }
+
+
+.pollinator-conservation-advancing-national-red-list-initiative,
+.understanding-eu-policy-dynamics-pollinators,
+.gaming-policies-pollinator-friendly-landscape {
+    .header-image-bar{
+        justify-content: start !important;
+        padding-left: 5vw;
+    }
+
+    .header-image h1.underline{
+        .breakpoint-large-down({
+            font-size: 30px;
+            padding-top: 0px;
+        });
+    }
+}
+
