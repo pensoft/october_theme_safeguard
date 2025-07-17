@@ -10,6 +10,12 @@ jumbotron = "understanding-eu-policy-dynamics-pollinators"
 background = "transperant"
 templates = "template3"
 description_limit = 0
+
+[jumbotron jumbotron2]
+jumbotron = "useful-resources"
+background = "transperant"
+templates = "template3"
+description_limit = 0
 ==
 {% component 'siteSearchInclude' %}
 
@@ -20,4 +26,8 @@ description_limit = 0
     <div class="row around-xs">
         <div class="col-md-8 col-xs-12">{% component 'jumbotron' %}</div>
     </div>
+</div>
+
+<div class="about-pollinators">
+{% component 'jumbotron2' %}
 </div>
