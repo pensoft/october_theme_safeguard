@@ -40,7 +40,7 @@ numberOfLevels = 1
     <div class="container">
         <div class="row top-xs between-xs footer-menu-container">
             <div class="col-xs-12 start-md center-xs">
-                <img class="project_footer_logo" src="{{ project_logo }}">
+                <a href="/"><img class="project_footer_logo" src="{{ project_logo }}"></a>
             </div>
             <div class="col-md-5 col-xs-12 links">
                 LINKS
@@ -54,23 +54,23 @@ numberOfLevels = 1
                 Follow Safeguard
                 <div class="icons">
                     <a href="https://www.safeguard.biozentrum.uni-wuerzburg.de/" target="_blank" class="pr p-secondary p-web normal" target="_blank"></a>
-                    {% if enable_twitter and twitter_url %}
-                    <a href="{{twitter_url}}" target="_blank" class="pr p-secondary p-twitter normal" ></a>
+                    {% if enable_linkedin and linkedin_url %}
+                    <a  href="{{linkedin_url}}" target="_blank" class="pr p-secondary p-linkedin normal" ></a>
+                    {% endif %}
+                    {% if this.theme.bluesky_url %}
+                    <a href="{{this.theme.bluesky_url}}" target="_blank" class="pr p-secondary p-bluesky normal"></a>
                     {% endif %}
                     {% if enable_facebook and facebook_url %}
                     <a href="{{facebook_url}}" target="_blank" class="pr p-secondary p-facebook normal" ></a>
                     {% endif %}
-                    {% if enable_linkedin and linkedin_url %}
-                    <a  href="{{linkedin_url}}" target="_blank" class="pr p-secondary p-linkedin normal" ></a>
-                    {% endif %}
                     {% if enable_youtube and youtube_url %}
                     <a  href="{{youtube_url}}" target="_blank" class="pr p-secondary p-youtube normal" ></a>
                     {% endif %}
+                    {% if enable_twitter and twitter_url %}
+                    <a href="{{twitter_url}}" target="_blank" class="pr p-secondary p-twitter normal" ></a>
+                    {% endif %}
                     {% if enable_instagram and instagram_url %}
                     <a  href="{{instagram_url}}" target="_blank" class="pr p-secondary p-instagram normal" ></a>
-                    {% endif %}
-                    {% if this.theme.bluesky_url %}
-                    <a href="{{this.theme.bluesky_url}}" target="_blank" class="pr p-secondary p-bluesky normal"></a>
                     {% endif %}
                     {% if this.theme.threads_url %}
                     <a href="{{this.theme.threads_url}}" target="_blank" class="pr p-secondary p-threads normal"></a>
