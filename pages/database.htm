@@ -1,0 +1,40 @@
+url = "/database"
+layout = "default"
+title = "Database"
+
+[siteSearchInclude]
+
+[jumbotron database_jumbotron]
+jumbotron = "database"
+background = "transperant"
+templates = "template3"
+description_limit = 0
+==
+<?php
+use Pensoft\Workshops\Models\Workshop;
+
+function onStart(){
+    $this['databases'] = Workshop::where('place', 'ilike', '%Database%')->orderBy('date', 'desc')->get();
+}
+?>
+==
+{% component 'siteSearchInclude' %}
+<div class="container">
+    {% component 'database_jumbotron' %}
+
+    <div class="row center-xs">
+        {% for database in databases %}
+            <div class="col-md-4 col-xs-12">
+                <div class="database-item">
+                    <div class="database-content">
+                        <div class="database-title">{{ database.title }}</div>
+                        <div class="database-description">
+                            {{database.description|raw}}
+                            <a href="{{database.link}}" class="btn btn-primary" target="_blank">{{'Access' |_}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
