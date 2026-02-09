@@ -15,7 +15,7 @@ use Pensoft\Knowledgelibrary\Models\Data;
 function onStart(){
     $this['formats'] = Format::get();
     $this['projects'] = Project::get();
-    $this['records'] = Data::orderBy('title', 'asc')->orderBy('date', 'desc')->get();
+    $this['records'] = Data::orderBy('date', 'desc')->orderBy('title', 'asc')->get();
 }
 ?>
 ==
