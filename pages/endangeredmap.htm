@@ -1,0 +1,58 @@
+url = "/endangered-map"
+layout = "default"
+title = "Endangered species map"
+
+
+[jumbotron endangered-intro]
+jumbotron = "endangered-intro"
+background = "transperant"
+templates = "template2"
+description_limit = 0
+
+[siteSearchInclude]
+
+[endangeredSpeciesMap]
+
+==
+<?
+use Pensoft\Accordions\Models\Category;
+use Pensoft\Accordions\Models\Item;
+
+function onStart(){
+    $this['record'] = Category::where('slug', 'endangered-map')->first();
+    if ($this['record']) {
+        $this['accordion_items'] = Item::where('category_id', $this['record']->id)->get();
+    } else {
+        $this['accordion_items'] = collect();
+    }
+}
+?>
+==
+
+{% component 'siteSearchInclude' %}
+
+<div class="container-fluid endangered-intro">
+    {% component 'endangered-intro' %}
+</div>
+
+<div class="container-fluid endangered-maps">
+    {% component 'endangeredSpeciesMap' %}
+</div>
+
+<div class="container">
+    <div class="row work_packages" id="tips">
+        <div class="col-xs-12">
+            {% for item in accordion_items %}
+            <div class="accordion-border">
+                <div class="row middle-xs accordion-toggle">
+                    <div class="col-xs start-xs">{{item.title}}</div>
+                    <div class="col-xs-2 end-xs plusminus"><span class="plus"></span></div>
+                </div>
+                <div class="accordion-content" style="display: none;">
+                    {{item.body|raw}}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
